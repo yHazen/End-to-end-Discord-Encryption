@@ -5,7 +5,7 @@
 // @description  I hope people won't start calling this SDC ^_^
 // @author       An0
 // @license      LGPLv3 - https://www.gnu.org/licenses/lgpl-3.0.txt
-// @downloadURL  https://gitlab.com/An0/SimpleDiscordCrypt/raw/master/SimpleDiscordCrypt.user.js
+// @downloadURL  https://gitlab.com/An0/SimpleDiscordCrypt/raw/master/f.user.js
 // @updateURL    https://gitlab.com/An0/SimpleDiscordCrypt/raw/master/SimpleDiscordCrypt.meta.js
 // @icon         https://gitlab.com/An0/SimpleDiscordCrypt/raw/master/logo.png
 // @match        https://*.discord.com/channels/*
@@ -2622,7 +2622,7 @@ async function handleUpdate(event) {
         Discord.original_dispatch.apply(this, arguments);
 }
 
-const messageRegex = /^([⠀-⣿]{16,}) `(?:SimpleDiscordCrypt|𝘚𝘪𝘮𝘱𝘭𝘦𝘋𝘪𝘴𝘤𝘰𝘳𝘥𝘊𝘳𝘺𝘱𝘵)`$/;
+const messageRegex = /^([⠀-⣿]{16,}) `(?:|)`$/;
 const systemMessageRegex = /^```(?:\w*\n)?-----SYSTEM MESSAGE-----\n?```\s*(.*?)\s*```(?:\w*\n)?(?:𝘚𝘪𝘮𝘱𝘭𝘦𝘋𝘪𝘴𝘤𝘰𝘳𝘥𝘊𝘳𝘺𝘱𝘵|SimpleDiscordCrypt)\n?```$/s;
 const unknownKeyMessage = "```fix\n-----ENCRYPTED MESSAGE WITH UNKNOWN KEY-----\n```";
 const invalidMessage = "```diff\n-⁣----ENCRYPTED MESSAGE WITH UNKNOWN FORMAT-----\n```"; //invisible separator after the first '-'
@@ -3348,9 +3348,9 @@ async function processSystemMessage(message, sysmsg) {
         case 'KEY SHARE': {
             let status = getSystemMessageProperty('status', sysmsg);
             const statusMsgs = {
-                'OK': "💻 There you go, take good care of it!",
-                'DENIED': "💻 That's a secret!!!",
-                'NOT FOUND': "💻 Huh? I don't know"
+                'OK': "",
+                'DENIED': "",
+                'NOT FOUND': ""
             };
             let statusMsg = statusMsgs[status];
             if(statusMsg == null) break;
